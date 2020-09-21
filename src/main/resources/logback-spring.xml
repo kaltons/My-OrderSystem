@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<configuration>
+    <!-- 小的配置项,用ConsoleAppender类处理 -->
+    <appender name="consoleLog" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- 展示形式 -->
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>
+                %d - %msg%n
+            </pattern>
+        </layout>
+    </appender>
+
+    <!-- 配置不同Info级别日志文件输出路径 -->
+    <appender name="fileInfoLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <!-- 配置过滤 -->
+    <filter class="ch.qos.logback.classic.filter.LevelFilter">
+        <level>ERROR</level>
+        <!-- 命中ERROR禁止 -->
+        <onMatch>DENY</onMatch>
+        <!-- 否则放行 -->
+        <onMismatch>ACCEPT</onMismatch>
+    </filter>
+    <encoder>
+        <pattern>
+            %msg%n
+        </pattern>
+    </encoder>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+        <!--路径 /var/log/tomcat/sell/info.%d.log-->
+        <fileNamePattern>D:\MyLog\sell-log\info.%d.log</fileNamePattern>
+    </rollingPolicy>
+    </appender>
+
+    <!-- 配置不同Error级别日志文件输出路径 -->
+    <appender name="fileErrorLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <encoder>
+            <pattern>
+                %msg%n
+            </pattern>
+        </encoder>
+        <!--滚动策略-->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--路径  /var/log/tomcat/sell/error.%d.log -->
+            <fileNamePattern>D:\MyLog\sell-log\error.%d.log</fileNamePattern>
+        </rollingPolicy>
+    </appender>
+
+
+    <!-- 配置到整个项目使用，默认级别info -->
+    <root level="info">
+        <!-- 引用配置 -->
+        <appender-ref ref="consoleLog"/>
+        <appender-ref ref="fileInfoLog"/>
+        <appender-ref ref="fileErrorLog"/>
+    </root>
+</configuration>
