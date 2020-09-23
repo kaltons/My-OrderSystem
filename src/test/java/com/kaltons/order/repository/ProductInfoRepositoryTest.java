@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * TODO
@@ -25,6 +26,18 @@ public class ProductInfoRepositoryTest {
     @Autowired
     private ProductInfoRepository repository;
 
+    /**
+     * 单一商品信息查询
+     */
+    @Test
+    public void findOne(){
+        Optional<ProductInfo> productInfo = repository.findById("123456");
+        productInfo.ifPresent(productInfo1 -> System.out.println(productInfo1.toString()));
+    }
+
+    /**
+     * 添加商品测试
+     */
     @Test
     public void saveTest() {
         ProductInfo productInfo = new ProductInfo();
@@ -42,6 +55,9 @@ public class ProductInfoRepositoryTest {
         Assert.assertNotNull(result);
     }
 
+    /**
+     * 根据上架状态查找商品信息测试操作
+     */
     @Test
     public void findByProductStatus() {
         List<ProductInfo> productInfoList = repository.findByProductStatus(0);

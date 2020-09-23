@@ -1,13 +1,17 @@
 package com.kaltons.order.service.impl;
 
+import com.kaltons.order.dto.CartDTO;
 import com.kaltons.order.entity.ProductInfo;
 import com.kaltons.order.enums.ProductStatusEnum;
+import com.kaltons.order.enums.ResultEnum;
+import com.kaltons.order.exception.SellException;
 import com.kaltons.order.repository.ProductInfoRepository;
 import com.kaltons.order.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -62,5 +66,43 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductInfo save(ProductInfo productInfo){
         return repository.save(productInfo);
+    }
+
+    /**
+     * 加库存
+     * @param cartDTOList
+     */
+    @Override
+    public void increaseStock(List<CartDTO> cartDTOList) {
+        for (CartDTO cartDTO:cartDTOList) {
+
+            Optional<ProductInfo> productInfo = repository.findById(cartDTO.getProductId());
+            productInfo.orElseThrow(() -> new SellException(ResultEnum.PRODUCT_NOT_EXIST));
+            int result = productInfo.get().getProductStock() + cartDTO.getProductQuantity();
+            repository.save(productInfo.get());
+        }
+    }
+
+    /**
+     * 减库存
+     * @param cartDTOList
+     */
+    @Override
+    @Transactional
+    public void decreaseStock(List<CartDTO> cartDTOList) {
+        for (CartDTO cartDTO: cartDTOList) {
+            Optional<ProductInfo> productInfo = repository.findById(cartDTO.getProductId());
+
+            productInfo.orElseThrow(() -> new SellException(ResultEnum.PRODUCT_NOT_EXIST));
+
+            int result = productInfo.get().getProductStock() - cartDTO.getProductQuantity();
+            if (result < 0) {
+                throw new SellException(ResultEnum.PRODUCT_STOCK_ERROR);
+            }
+
+            productInfo.get().setProductStock(result);
+
+            repository.save(productInfo.get());
+        }
     }
 }

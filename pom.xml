@@ -43,6 +43,12 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!-- Json数据转化工具 -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

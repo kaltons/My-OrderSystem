@@ -4,19 +4,16 @@ import lombok.Getter;
 
 /**
  * TODO
- * 商品上架状态
+ * 订单支付状态
  * @author 衍方
  * @desc
- * @date 2020/9/21 - 22:42
+ * @date 2020/9/22 - 11:31
  */
 @Getter
-public enum ProductStatusEnum {
+public enum  PayStatusEnum {
 
-
-    UP(0,"上架"),
-    DOWN(0,"下架"),
-    ;
-
+    WAIT(0, "等待支付"),
+    SUCCESS(1, "支付成功"),;
     /**
      * 状态码
      */
@@ -27,7 +24,7 @@ public enum ProductStatusEnum {
      */
     private final String message;
 
-    ProductStatusEnum(Integer code, String message) {
+    PayStatusEnum(Integer code, String message) {
         this.code = code;
         this.message = message;
     }

@@ -4,17 +4,17 @@ import lombok.Getter;
 
 /**
  * TODO
- * 商品上架状态
+ * 订单状态信息
  * @author 衍方
  * @desc
- * @date 2020/9/21 - 22:42
+ * @date 2020/9/22 - 11:27
  */
 @Getter
-public enum ProductStatusEnum {
+public enum OrderStatusEnum {
 
-
-    UP(0,"上架"),
-    DOWN(0,"下架"),
+    NEW(0, "新订单"),
+    FINISHED(1, "完结"),
+    CANCEL(2, "已取消"),
     ;
 
     /**
@@ -27,7 +27,7 @@ public enum ProductStatusEnum {
      */
     private final String message;
 
-    ProductStatusEnum(Integer code, String message) {
+    OrderStatusEnum(Integer code, String message) {
         this.code = code;
         this.message = message;
     }

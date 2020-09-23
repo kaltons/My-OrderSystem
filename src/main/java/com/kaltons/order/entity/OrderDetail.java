@@ -9,16 +9,29 @@ import java.util.Date;
 
 /**
  * TODO
- * 商品详情
+ * 订单详情信息
  * @author 衍方
  * @desc
- * @date 2020/9/21 - 21:32
+ * @date 2020/9/22 - 11:41
  */
 @Entity
 @Data
-public class ProductInfo {
+public class OrderDetail {
 
+    /**
+     * 订单详情编号
+     */
     @Id
+    private String detailId;
+
+    /**
+     * 订单编号
+     */
+    private String orderId;
+
+    /**
+     * 商品编号
+     */
     private String productId;
 
     /**
@@ -34,27 +47,12 @@ public class ProductInfo {
     /**
      * 商品库存
      */
-    private Integer productStock;
-
-    /**
-     * 商品描述
-     */
-    private String productDescription;
+    private int productQuantity;
 
     /**
      * 商品小图
      */
     private String productIcon;
-
-    /**
-     * 状态, 0正常1下架
-     */
-    private Integer productStatus;
-
-    /**
-     * 类目编号
-     */
-    private Integer categoryType;
 
     /**
      * 创建时间
@@ -65,5 +63,6 @@ public class ProductInfo {
      * 更新时间
      */
     private Date updateTime;
+
 
 }
