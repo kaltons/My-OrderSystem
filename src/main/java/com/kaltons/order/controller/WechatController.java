@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.net.URLEncoder;
 
 /**
- *
  * 第三方SDK方式获取openid
+ *
  * @author 衍方
  * @desc
  * @date 2020/9/23 - 20:52

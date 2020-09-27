@@ -13,6 +13,7 @@ import com.kaltons.order.exception.SellException;
 import com.kaltons.order.repository.OrderDetailRepository;
 import com.kaltons.order.repository.OrderMasterRepository;
 import com.kaltons.order.service.OrderService;
+import com.kaltons.order.service.PayService;
 import com.kaltons.order.service.ProductService;
 import com.kaltons.order.utils.KeyUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -51,6 +52,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private OrderDetailRepository orderDetailRepository;
+
+    @Autowired
+    private PayService payService;
 
     /**
      * 创建订单
@@ -188,7 +192,7 @@ public class OrderServiceImpl implements OrderService {
         productService.increaseStock(cartDTOList);
         //如果已支付, 还需要退款
         if (orderDTO.getPayStatus().equals(PayStatusEnum.SUCCESS.getCode())) {
-            //TODO
+            payService.refund(orderDTO);
         }
         return orderDTO;
     }

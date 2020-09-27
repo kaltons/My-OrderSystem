@@ -3,16 +3,31 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: 123456
-    url: jdbc:mysql://192.168.221.131/sell?characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://192.168.221.133/sell?characterEncoding=utf-8&useSSL=false
   jpa:
     show-sql: true
   jackson:
     default-property-inclusion: non_null
+
+  freemarker:
+    suffix: .ftl
+    template-loader-path: classpath:/templates
 
 server:
   servlet:
     context-path: /sell
 
 wechat:
-  mpAppId: wxb371971d30dc8b95
-  mpAppSecret: c25e8ce1e66a930680fdfb2ad6c11d01
+  # 公众号平台，授权
+  mpAppId: wxa213ec9b2b608f08
+  mpAppSecret: d08229baa7b17xxxxxxxxxxxxxxxx
+
+  # 支付/商户号
+  mchId: 15895xxxxx
+  mchKey: 4991ebc3a4b34dxxxxxxxxxxxxxxxxxxxx
+  # 发起支付不需要证书, 退款需要
+  keyPath: D:\MyLog\weixin_cert\h5.p12
+  # 微信支付异步回调地址
+  notifyUrl: http://kalton.natapp1.cc/sell/pay/notify
+
+
