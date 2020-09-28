@@ -56,4 +56,12 @@ public interface OrderService {
      */
     OrderDTO payOrder(OrderDTO orderDTO);
 
+    /**
+     * 查找全部订单
+     * @param pageable
+     * @return
+     */
+    Page<OrderDTO> findAllOrders(Pageable pageable);
+
+
 }

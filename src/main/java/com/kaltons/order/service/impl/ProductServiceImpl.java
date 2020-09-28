@@ -26,6 +26,8 @@ import java.util.Optional;
 @Service
 public class ProductServiceImpl implements ProductService {
 
+
+
     @Autowired
     private ProductInfoRepository repository;
 
@@ -59,7 +61,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     /**
-     * 上架商品
+     * 添加商品
      * @param productInfo
      * @return
      */
@@ -105,4 +107,43 @@ public class ProductServiceImpl implements ProductService {
             repository.save(productInfo.get());
         }
     }
+
+    /**
+     * 上架
+     * @param productId
+     * @return
+     */
+    @Override
+    public ProductInfo onSale(String productId) {
+        Optional<ProductInfo> productInfo = repository.findById(productId);
+        productInfo.orElseThrow(() -> new SellException(ResultEnum.PRODUCT_NOT_EXIST));
+
+        if (productInfo.get().getProductStatusEnum() == ProductStatusEnum.UP) {
+            throw new SellException(ResultEnum.PRODUCT_STATUS_ERROR);
+        }
+
+        // 修改为上架状态
+        productInfo.get().setProductStatus(ProductStatusEnum.UP.getCode());
+        return repository.save(productInfo.get());
+    }
+
+    /**
+     * 下架
+     * @param productId
+     * @return
+     */
+    @Override
+    public ProductInfo offSale(String productId) {
+        Optional<ProductInfo> productInfo = repository.findById(productId);
+        productInfo.orElseThrow(() -> new SellException(ResultEnum.PRODUCT_NOT_EXIST));
+
+        if (productInfo.get().getProductStatusEnum() == ProductStatusEnum.DOWN) {
+            throw new SellException(ResultEnum.PRODUCT_STATUS_ERROR);
+        }
+
+        // 修改为上架状态
+        productInfo.get().setProductStatus(ProductStatusEnum.DOWN.getCode());
+        return repository.save(productInfo.get());
+    }
+
 }

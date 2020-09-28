@@ -1,7 +1,11 @@
 package com.kaltons.order.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.kaltons.order.entity.OrderDetail;
+import com.kaltons.order.enums.OrderStatusEnum;
+import com.kaltons.order.enums.PayStatusEnum;
+import com.kaltons.order.utils.EnumUtil;
 import com.kaltons.order.utils.serializer.DateToLongSerializer;
 import lombok.Data;
 
@@ -77,4 +81,22 @@ public class OrderDTO {
      * 订单详情列表
      */
     List<OrderDetail> orderDetailList;
+
+    /**
+     * 获取对应订单状态枚举值
+     * @return
+     */
+    @JsonIgnore
+    public OrderStatusEnum getOrderStatusEnum() {
+        return EnumUtil.getByCode(orderStatus, OrderStatusEnum.class);
+    }
+
+    /**
+     * 获取对应支付状态枚举值
+     * @return
+     */
+    @JsonIgnore
+    public PayStatusEnum getPayStatusEnum() {
+        return EnumUtil.getByCode(payStatus, PayStatusEnum.class);
+    }
 }

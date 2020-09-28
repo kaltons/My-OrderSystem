@@ -254,4 +254,22 @@ public class OrderServiceImpl implements OrderService {
         }
         return orderDTO;
     }
+
+    /**
+     * 查找全部订单
+     * @param pageable
+     * @return
+     */
+    @Override
+    public Page<OrderDTO> findAllOrders(Pageable pageable) {
+
+        Page<OrderMaster> orderMasterPage = orderMasterRepository.findAll(pageable);
+
+        //使用转换器获取拷贝的集合对象
+        List<OrderDTO> orderDTOList = OrderMasterToOrderDTOConverter.convert(orderMasterPage.getContent());
+
+        //转换为返回对象
+        return new PageImpl<>(orderDTOList, pageable, orderMasterPage.getTotalElements());
+
+    }
 }

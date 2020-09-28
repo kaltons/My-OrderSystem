@@ -1,5 +1,8 @@
 package com.kaltons.order.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.kaltons.order.enums.ProductStatusEnum;
+import com.kaltons.order.utils.EnumUtil;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -65,5 +68,14 @@ public class ProductInfo {
      * 更新时间
      */
     private Date updateTime;
+
+    /**
+     * 获取商品对应状态枚举值
+     * @return
+     */
+    @JsonIgnore
+    public ProductStatusEnum getProductStatusEnum() {
+        return EnumUtil.getByCode(productStatus, ProductStatusEnum.class);
+    }
 
 }

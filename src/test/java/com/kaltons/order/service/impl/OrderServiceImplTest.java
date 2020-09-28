@@ -33,7 +33,7 @@ public class OrderServiceImplTest {
     @Autowired
     private OrderService orderService;
 
-    private final String BUYER_OPENID = "1008611";
+    private final String BUYER_OPENID = "Kuuh3ykZfCymi8JMwis";
 
     private final String ORDER_ID = "1600768959879303225";
 
@@ -102,6 +102,16 @@ public class OrderServiceImplTest {
         OrderDTO orderDTO = orderService.findOne(ORDER_ID);
         OrderDTO result = orderService.payOrder(orderDTO);
         Assert.assertEquals(PayStatusEnum.SUCCESS.getCode(), result.getPayStatus());
+
+    }
+
+    @Test
+    public void allList() {
+
+        PageRequest request = PageRequest.of(0,2);
+        Page<OrderDTO> orderDTOPage = orderService.findAllOrders(request);
+        Assert.assertTrue("查询所有的订单列表", orderDTOPage.getTotalElements() > 0);
+        //Assert.assertNotEquals(0,orderDTOPage.getTotalElements());
 
     }
 }
