@@ -12,9 +12,7 @@ import com.kaltons.order.enums.ResultEnum;
 import com.kaltons.order.exception.SellException;
 import com.kaltons.order.repository.OrderDetailRepository;
 import com.kaltons.order.repository.OrderMasterRepository;
-import com.kaltons.order.service.OrderService;
-import com.kaltons.order.service.PayService;
-import com.kaltons.order.service.ProductService;
+import com.kaltons.order.service.*;
 import com.kaltons.order.utils.KeyUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -56,9 +54,14 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private PayService payService;
 
+    @Autowired
+    private PushMsgService pushMsgService;
+
+    @Autowired
+    private WebSocket webSocket;
+
     /**
      * 创建订单
-     *
      * @param orderDTO
      * @return
      */
@@ -102,6 +105,8 @@ public class OrderServiceImpl implements OrderService {
         ).collect(Collectors.toList());
         productService.decreaseStock(cartDTOList);
 
+        // 发送webSocket消息
+        webSocket.sendMessage(orderDTO.getOrderId());
         return orderDTO;
     }
 
@@ -220,6 +225,9 @@ public class OrderServiceImpl implements OrderService {
             log.error("【完结订单】更新失败, orderMaster={}", orderMaster);
             throw new SellException(ResultEnum.ORDER_UPDATE_FAIL);
         }
+
+        // 推送微信模板消息
+        pushMsgService.orderStatus(orderDTO);
         return orderDTO;
     }
 
