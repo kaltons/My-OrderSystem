@@ -3,8 +3,8 @@ package com.kaltons.order.dto;
 import lombok.Data;
 
 /**
- * TODO
  * 购物车数据传输对象
+ *
  * @author 衍方
  * @desc
  * @date 2020/9/22 - 17:12

@@ -10,8 +10,8 @@ import javax.persistence.Id;
 import java.util.Date;
 
 /**
- * TODO
  * 商品类目
+ *
  * @author 衍方
  * @desc
  * @date 2020/9/21 - 16:46

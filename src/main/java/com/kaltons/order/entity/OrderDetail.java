@@ -8,8 +8,8 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 /**
- * TODO
  * 订单详情信息
+ *
  * @author 衍方
  * @desc
  * @date 2020/9/22 - 11:41

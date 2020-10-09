@@ -3,8 +3,8 @@ package com.kaltons.order.enums;
 import lombok.Getter;
 
 /**
- * TODO
  * 商品上架状态
+ *
  * @author 衍方
  * @desc
  * @date 2020/9/21 - 22:42

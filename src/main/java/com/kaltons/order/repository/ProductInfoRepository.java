@@ -6,8 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 /**
- * TODO
  * ProductInfo —— 持久化接口类
+ *
  * @author 衍方
  * @desc
  * @date 2020/9/21 - 21:40

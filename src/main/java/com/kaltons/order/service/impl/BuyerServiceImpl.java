@@ -10,8 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * TODO
  * 封装校验买家微信openId是否一致 实现
+ *
  * @author 衍方
  * @desc
  * @date 2020/9/23 - 2:34

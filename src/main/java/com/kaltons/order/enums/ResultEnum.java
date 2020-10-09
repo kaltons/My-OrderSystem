@@ -3,8 +3,8 @@ package com.kaltons.order.enums;
 import lombok.Getter;
 
 /**
- * TODO
  * Model状态枚举常量
+ *
  * @author 衍方
  * @desc
  * @date 2020/9/22 - 16:00

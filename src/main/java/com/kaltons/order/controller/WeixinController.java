@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * TODO
  * 手工方式获取openid
+ *
  * @author 衍方
  * @desc
  * @date 2020/9/23 - 20:16

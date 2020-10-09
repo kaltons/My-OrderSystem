@@ -11,6 +11,7 @@ import javax.websocket.server.ServerEndpoint;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 /**
+ * WebSocket消息推送服务
  *
  * @author 衍方
  * @link https://github.com/kaltons

@@ -3,8 +3,8 @@ package com.kaltons.order.utils;
 import java.util.Random;
 
 /**
- * TODO
  * 生成一个唯一的Key，用于订单号，订单详情编号
+ *
  * @author 衍方
  * @desc
  * @date 2020/9/22 - 16:33

@@ -50,7 +50,7 @@ public class SellerUserController {
      */
     @GetMapping("/main")
     public ModelAndView main(){
-        return new ModelAndView("common/main");
+        return new ModelAndView("/common/main");
     }
 
     @GetMapping("/login")
@@ -92,7 +92,8 @@ public class SellerUserController {
         }
 
         map.put("msg", ResultEnum.LOGOUT_SUCCESS.getMessage());
-        map.put("url", "/sell/seller/order/list");
+        map.put("url", "/sell/seller/main");
+        //map.put("url", "/sell/seller/order/list");
         return new ModelAndView("/common/success", map);
     }
 }

@@ -37,6 +37,11 @@ public class SellExceptionHandler {
                 .concat("/sell/seller/login"));
     }
 
+    /**
+     * 商品异常错误拦截
+     * @param e
+     * @return
+     */
     @ExceptionHandler(value = SellException.class)
     @ResponseBody
     public ResultVO handlerSellerException(SellException e) {

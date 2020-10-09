@@ -6,8 +6,8 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * TODO
  * 定制返回给前端的商品视图对象
+ *
  * @author 衍方
  * @desc
  * @date 2020/9/21 - 23:41

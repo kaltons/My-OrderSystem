@@ -4,8 +4,8 @@ import com.kaltons.order.enums.ResultEnum;
 import lombok.Getter;
 
 /**
- * TODO
  * 系统相关错误异常
+ *
  * @author 衍方
  * @desc
  * @date 2020/9/22 - 16:05

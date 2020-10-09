@@ -6,8 +6,8 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 /**
- * TODO
  * 返回给前端的商品详情视图对象
+ *
  * @author 衍方
  * @desc
  * @date 2020/9/22 - 0:07

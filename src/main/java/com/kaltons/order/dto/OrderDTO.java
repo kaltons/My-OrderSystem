@@ -15,8 +15,8 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * TODO
  * 订单数据传输对象
+ *
  * @author 衍方
  * @desc
  * @date 2020/9/22 - 14:22
