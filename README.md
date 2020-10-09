@@ -16,9 +16,9 @@
 
 微信公众号接入开发和微信开放平台接入开发就没有重复造轮子
 分别使用了两个开源的SDK。
-链接如下
-https://github.com/Wechat-Group/weixin-java-tools ，微信网页授权获取openId
-https://github.com/Pay-Group/best-pay-sdk ，第三方微信支付SDK
+链接如下：
+1、https://github.com/Wechat-Group/weixin-java-tools ，微信网页授权获取openId
+2、https://github.com/Pay-Group/best-pay-sdk ，第三方微信支付SDK
 
 **项目功能简介**： 
 
